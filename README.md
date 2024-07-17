@@ -1,2 +1,2 @@
 # ctftime-ratings-calculator
-temp
+just download and double click it 
