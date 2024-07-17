@@ -28,21 +28,21 @@
     <h1>ctftime ratings calculator</h1>
     <form id="calculatorForm">
       <label for="weight">Weight:</label>
-      <input type="number" id="weight" required>
+      <input type="number" id="weight" step="any" required>
       <br>
       <label for="teamPoints">Team Points:</label>
-      <input type="number" id="teamPoints" required>
+      <input type="number" id="teamPoints" step="any" required>
       <br>
       <label for="bestPoints">Best Points:</label>
-      <input type="number" id="bestPoints" required>
+      <input type="number" id="bestPoints" step="any" required>
       <br>
       <label for="teamPlace">Team Place:</label>
-      <input type="number" id="teamPlace" required>
+      <input type="number" id="teamPlace" step="any" required>
       <br>
       <label for="totalTeams">Total Teams:</label>
-      <input type="number" id="totalTeams" required>
+      <input type="number" id="totalTeams" step="any" required>
       <br>
-      <button type="submit">calculate</button>
+      <button type="submit">계산</button>
     </form>
     <div id="result"></div>
     <script>
@@ -53,8 +53,12 @@
         const bestPoints = parseFloat(document.getElementById('bestPoints').value);
         const teamPlace = parseFloat(document.getElementById('teamPlace').value);
         const totalTeams = parseFloat(document.getElementById('totalTeams').value);
+        if (isNaN(weight) || isNaN(teamPoints) || isNaN(bestPoints) || isNaN(teamPlace) || isNaN(totalTeams)) {
+          document.getElementById('result').textContent = '올바른 숫자를 입력해주세요.';
+          return;
+        }
         const result = weight * ((teamPoints / bestPoints) + (1 / teamPlace)) / (1 / (1 + teamPlace / totalTeams));
-        document.getElementById('result').textContent = `result: ${result.toFixed(2)}`;
+        document.getElementById('result').textContent = `결과: ${result.toFixed(2)}`;
       });
     </script>
   </body>
