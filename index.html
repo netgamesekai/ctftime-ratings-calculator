@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ctftime ratings calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      input,
+      button {
+        margin: 10px 0;
+        padding: 5px;
+      }
+
+      #result {
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ctftime ratings calculator</h1>
+    <form id="calculatorForm">
+      <label for="weight">Weight:</label>
+      <input type="number" id="weight" required>
+      <br>
+      <label for="teamPoints">Team Points:</label>
+      <input type="number" id="teamPoints" required>
+      <br>
+      <label for="bestPoints">Best Points:</label>
+      <input type="number" id="bestPoints" required>
+      <br>
+      <label for="teamPlace">Team Place:</label>
+      <input type="number" id="teamPlace" required>
+      <br>
+      <label for="totalTeams">Total Teams:</label>
+      <input type="number" id="totalTeams" required>
+      <br>
+      <button type="submit">calculate</button>
+    </form>
+    <div id="result"></div>
+    <script>
+      document.getElementById('calculatorForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const weight = parseFloat(document.getElementById('weight').value);
+        const teamPoints = parseFloat(document.getElementById('teamPoints').value);
+        const bestPoints = parseFloat(document.getElementById('bestPoints').value);
+        const teamPlace = parseFloat(document.getElementById('teamPlace').value);
+        const totalTeams = parseFloat(document.getElementById('totalTeams').value);
+        const result = weight * ((teamPoints / bestPoints) + (1 / teamPlace)) / (1 / (1 + teamPlace / totalTeams));
+        document.getElementById('result').textContent = `result: ${result.toFixed(2)}`;
+      });
+    </script>
+  </body>
+</html>
