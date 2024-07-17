@@ -54,7 +54,7 @@
         const teamPlace = parseFloat(document.getElementById('teamPlace').value);
         const totalTeams = parseFloat(document.getElementById('totalTeams').value);
         const result = weight * ((teamPoints / bestPoints) + (1 / teamPlace)) / (1 / (1 + teamPlace / totalTeams));
-        document.getElementById('result').textContent = `결과: ${result.toFixed(2)}`;
+        document.getElementById('result').textContent = `result: ${result.toFixed(2)}`;
       });
     </script>
   </body>
